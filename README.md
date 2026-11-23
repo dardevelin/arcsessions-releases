@@ -6,9 +6,9 @@
 - **ARC Mic**: a microphone other apps can choose, carrying your mic, your music or a sound clip into a call.
 - **Recording tools**: a recorder, a replay of the last minutes, live transcription on your Mac, and sound clips that play when a word is heard.
 - **Stream Deck control**: volume dials that follow your mixer, mute keys, push to talk.
-- **Private by default**: everything stays on your Mac. No account, no telemetry, nothing sent anywhere.
+- **Private by default**: everything stays on your Mac. No account, no telemetry, nothing about you sent anywhere.
 
-This repository holds ARCSessions' signed releases: the downloads, their checksums and the release notes. The latest is [0.21.0](https://github.com/dardevelin/arcsessions-releases/releases/latest).
+This repository holds ARCSessions' signed releases: the downloads, their checksums and the release notes. The latest is [0.22.0](https://github.com/dardevelin/arcsessions-releases/releases/latest).
 
 ## Install
 
@@ -26,8 +26,8 @@ It installs the app from the disk image and asks for nothing.
 
 | Download | For | What it does | What it asks |
 |---|---|---|---|
-| **`ARCSessions-0.21.0.dmg`** | Most people | Open it and drag ARCSessions onto Applications. | Nothing. An administrator password later, only if you choose to install ARC Mic and ARC Speakers. |
-| **`ARCSessions-0.21.0.pkg`** | Managed Macs (MDM), or if you prefer Installer | Installs the app, and ARC Mic and ARC Speakers, in one step. The Mac's audio restarts for a moment. | An administrator password, once. |
+| **`ARCSessions-0.22.0.dmg`** | Most people | Open it and drag ARCSessions onto Applications. | Nothing. An administrator password later, only if you choose to install ARC Mic and ARC Speakers. |
+| **`ARCSessions-0.22.0.pkg`** | Managed Macs (MDM), or if you prefer Installer | Installs the app, and ARC Mic and ARC Speakers, in one step. The Mac's audio restarts for a moment. | An administrator password, once. |
 
 Neither installs a background service, and neither sends anything over the network.
 
@@ -40,11 +40,15 @@ Neither installs a background service, and neither sends anything over the netwo
 Each download has a `.sha256` file beside it in the release. Put both in one folder and run:
 
 ```bash
-shasum -a 256 -c ARCSessions-0.21.0.dmg.sha256
+shasum -a 256 -c ARCSessions-0.22.0.dmg.sha256
 ```
 
-It prints `ARCSessions-0.21.0.dmg: OK`. macOS also checks the signature when you open it; to check it yourself:
-`spctl -a -t open --context context:primary-signature -vv ARCSessions-0.21.0.dmg` says *Notarized Developer ID*.
+It prints `ARCSessions-0.22.0.dmg: OK`. macOS also checks the signature when you open it; to check it yourself:
+`spctl -a -t open --context context:primary-signature -vv ARCSessions-0.22.0.dmg` says *Notarized Developer ID*.
+
+## Updating
+
+ARCSessions can check once a day whether a newer version is out; it asks you once and is off until you say yes. **Help › Check for Updates…** works at any time, and Settings › General › Updates has the daily check and "Include betas". One click downloads the new version, checks its checksum and its signature, asks about unsaved changes, installs it and opens it again. Installed with Homebrew, it runs `brew upgrade --cask arcsessions` for you after quitting; you can also run that yourself.
 
 ## Uninstall
 
